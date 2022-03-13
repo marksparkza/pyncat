@@ -14,7 +14,7 @@ async def execute(reader, writer):
     client_addr = writer.get_extra_info('peername')
     log('connected')
 
-    input_data = await reader.read()
+    input_data = await reader.read(65536)
     log(f'{len(input_data)} bytes received')
 
     untrusted_code = input_data.decode()
